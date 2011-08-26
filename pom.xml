@@ -27,9 +27,9 @@
 
 	<distributionManagement>
 		<repository>
-			<id>releases</id>
-			<name>Internal Releases</name>
-			<url>http://05rnb-lab01-osc:8084/nexus/content/repositories/dstvLabs/</url>
+			<id>dstvLabs</id>
+<!-- 			<name>Internal Releases</name>
+			<url>http://05rnb-lab01-osc:8084/nexus/content/repositories/dstvLabs/</url> -->
 		</repository>
 	</distributionManagement>
 
