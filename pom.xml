@@ -6,13 +6,26 @@
 	<artifactId>sandbox</artifactId>
 	<name>CI Test Application</name>
 	<packaging>war</packaging>
-	<version>0.0.1-BUILD-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOT</version>
+
 	<properties>
 		<java-version>1.6</java-version>
 		<org.springframework-version>3.0.5.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.9</org.aspectj-version>
 		<org.slf4j-version>1.5.10</org.slf4j-version>
 	</properties>
+
+	<ciManagement>
+		<system>Jenkins</system>
+		<url>http://05rnb-lab01-osc:8080/</url>
+	</ciManagement>
+
+	<scm>
+		<connection>scm:git:https://dstvobuild:adm1n123@github.com/pacomendes/Sandbox.git</connection>
+		<developerConnection>scm:git:https://dstvobuild:adm1n123@github.com/pacomendes/Sandbox.git</developerConnection>
+		<url>https://github.com/pacomendes/Sandbox/</url>
+	</scm>
+
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
@@ -118,21 +131,19 @@
 		</dependency>
 
 	</dependencies>
-	<!--<repositories>
-			For testing against latest Spring snapshots <repository> <id>org.springframework.maven.snapshot</id>
-			<name>Spring Maven Snapshot Repository</name> <url>http://maven.springframework.org/snapshot</url> 
-			<releases> <enabled>false</enabled> </releases> <snapshots> <enabled>true</enabled> 
-			</snapshots> </repository> For developing against latest Spring milestones 
-			<repository> <id>org.springframework.maven.milestone</id> <name>Spring Maven 
-			Milestone Repository</name> <url>http://maven.springframework.org/milestone</url> 
-			<snapshots> <enabled>false</enabled> </snapshots> </repository> 
-
-	</repositories> -->
+	<!--<repositories> For testing against latest Spring snapshots <repository> 
+		<id>org.springframework.maven.snapshot</id> <name>Spring Maven Snapshot Repository</name> 
+		<url>http://maven.springframework.org/snapshot</url> <releases> <enabled>false</enabled> 
+		</releases> <snapshots> <enabled>true</enabled> </snapshots> </repository> 
+		For developing against latest Spring milestones <repository> <id>org.springframework.maven.milestone</id> 
+		<name>Spring Maven Milestone Repository</name> <url>http://maven.springframework.org/milestone</url> 
+		<snapshots> <enabled>false</enabled> </snapshots> </repository> </repositories> -->
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
 				<configuration>
 					<source>${java-version}</source>
 					<target>${java-version}</target>
@@ -141,13 +152,15 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1.1</version>
 				<configuration>
-					<warName>sandbox</warName>
+					<warName>Sandbox-${project.version}</warName>
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.2</version>
 				<executions>
 					<execution>
 						<id>install</id>
@@ -157,6 +170,14 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.2.1</version>
+				<configuration>
+					<tagNameFormat>v${project.version}</tagNameFormat>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -194,6 +215,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.9</version>
 				<configuration>
 					<junitArtifactName>junit:junit</junitArtifactName>
 					<excludes>
