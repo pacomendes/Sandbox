@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.dstvo</groupId>
 	<artifactId>sandbox</artifactId>
@@ -24,6 +25,14 @@
 		<developerConnection>scm:git:https://dstvobuild:adm1n123@github.com/pacomendes/Sandbox.git</developerConnection>
 		<url>https://github.com/pacomendes/Sandbox/</url>
 	</scm>
+
+	<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<name>Internal Releases</name>
+			<url>http://05rnb-lab01-osc:8084/nexus/content/repositories/dstvLabs/</url>
+		</repository>
+	</distributionManagement>
 
 	<dependencies>
 		<!-- Spring -->
@@ -175,7 +184,7 @@
 				<artifactId>maven-release-plugin</artifactId>
 				<version>2.2.1</version>
 				<configuration>
-					<tagNameFormat>v${project.version}</tagNameFormat>
+					<tagNameFormat>v@{project.version}</tagNameFormat>
 				</configuration>
 			</plugin>
 			<plugin>
