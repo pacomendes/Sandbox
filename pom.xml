@@ -25,13 +25,13 @@
 		<url>https://github.com/pacomendes/Sandbox/</url>
 	</scm>
 
-	<distributionManagement>
-		<repository>
-			<id>dstvLabs</id>
-<!-- 			<name>Internal Releases</name>
-			<url>http://05rnb-lab01-osc:8084/nexus/content/repositories/dstvLabs/</url> -->
-		</repository>
-	</distributionManagement>
+  <distributionManagement>
+    <repository>
+      <id>nexus</id>
+      <name>Labs Release Repo</name>
+      <url>http://05rnb-lab01-osc:8084/nexus/content/repositories/dstvLabs/</url>
+    </repository>
+  </distributionManagement>
 
 	<dependencies>
 		<!-- Spring -->
